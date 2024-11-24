@@ -1,50 +1,70 @@
-# FMU NFL Pre-Sale Registration
+# Alunos:
 
-## Descrição
+2025589 - Olavo Crispim
+2032163 - Augusto Santos Preto
+1898835 - Enzo Freitas Sindona
 
-O projeto "FMU NFL Pre-Sale Registration" é um sistema de registro online desenvolvido por estudantes da FMU para a pré-venda de ingressos para jogos da NFL no Brasil. O sistema permite aos usuários se inscreverem para receber notificações sobre o lançamento das vendas de ingressos, garantindo assim a oportunidade de comprar ingressos antes do público geral.
+# Projeto NFL FMU
 
-## Funcionalidades
-
-- **Cadastro de Usuários:** Formulário de inscrição para coletar informações essenciais como nome, sobrenome, e-mail, CPF, número de celular e data de nascimento.
-- **Confirmação de Inscrição:** Página de confirmação que agradece ao usuário por se registrar para receber notificações.
-- **Validação de Dados:** Verificações básicas para garantir que as entradas do formulário são válidas (por exemplo, formato de e-mail e CPF).
-
-## Tecnologias Utilizadas
-
-- **HTML:** Estrutura básica das páginas.
-- **CSS:** Estilos para layout e design responsivo.
-- **JavaScript:** (Assumido, mas não especificado nos arquivos atuais) Para validação de formulário e interações do lado do cliente.
+Este é um projeto desenvolvido como parte das atividades acadêmicas da FMU. O objetivo principal é gerenciar um sistema de cadastro e validação para pré-venda de ingressos para jogos da NFL no Brasil.
 
 ## Estrutura do Projeto
 
 ```
-- /imagens
-  - logo_fmu.jpg
-  - wp11853374.png
-- /css
-  - estilo.css
-- index.html
-- confirmacao.html
+project/
+│
+├── css/
+│   └── estilo.css          # Estilos aplicados nas páginas HTML.
+│
+├── img/
+│   └── logo_fmu.jpg        # Logo da FMU utilizada nas páginas HTML.
+│
+├── controler/
+│   ├── config.php          # Configurações gerais do projeto.
+│   ├── registro_usuario.php # Script de backend para registrar novos usuários.
+│   └── valida_email.php    # Validação de e-mails já cadastrados.
+│
+├── index.html              # Página principal com formulário de cadastro.
+└── confirmacao.html        # Página de confirmação após o cadastro.
 ```
 
-## Como Usar
+## Funcionalidades
 
-1. **Acesso ao Formulário:** Os usuários acessam a página `index.html` para preencher suas informações.
-2. **Submissão do Formulário:** Após preencher o formulário, o usuário deve concordar com os termos e condições e enviar suas informações.
-3. **Confirmação:** O usuário é redirecionado para `confirmacao.html`, que confirma o registro e agradece pela inscrição.
+1. **Formulário de Cadastro (index.html):**
 
-## Contribuidores
+   - Nome, sobrenome, e-mail, CPF, celular e data de nascimento são coletados.
+   - Validação de e-mail em tempo real.
 
-- Olavo Crispim (2025589)
-- Augusto Santos Preto (2032163)
-- Enzo Freitas Sindona (1898835)
-- Matheus Pereira dos Santos (1968864)
+2. **Validação de E-mail:**
 
-## Licença
+   - Verifica se o e-mail já está registrado via `valida_email.php`.
 
-Informar sobre a licença de uso do projeto, se aplicável.
+3. **Registro de Usuário:**
 
-## Suporte
+   - Os dados submetidos pelo formulário são tratados por `registro_usuario.php`.
 
-Para mais informações ou suporte, entre em contato com o administrador do sistema através de `email@fmu.br`.
+4. **Página de Confirmação (confirmacao.html):**
+   - Mensagem de sucesso para usuários que completaram o cadastro.
+
+## Como Rodar o Projeto
+
+1. **Requisitos:**
+
+   - Servidor PHP (ex.: XAMPP, WAMP, ou LAMP).
+   - Navegador para visualizar as páginas.
+
+2. **Passos:**
+   - Clone ou extraia o projeto em uma pasta acessível pelo servidor web.
+   - Certifique-se de que o servidor está configurado e rodando.
+   - Acesse o projeto via navegador (ex.: `http://localhost/projeto-nfl-fmu/`).
+
+## Tecnologias Utilizadas
+
+- **HTML5**: Estrutura das páginas web.
+- **CSS3**: Estilização das páginas.
+- **JavaScript**: Validações e interatividade no frontend.
+- **PHP**: Backend para validações e registro.
+
+## Contato
+
+Para dúvidas ou sugestões, entre em contato com o desenvolvedor do projeto.
