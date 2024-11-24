@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário FMU</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <img src="img/logo_fmu.jpg" alt="Logo FMU" class="logo">
+
+    <div class="form-container">
+
+        <h3 class="mensagem">Faça já seu cadastro para receber avisos do lançamento da pré-venda dos ingressos para os jogos da NFL no Brasil</h3>
+
+        <form id="formulario" method="post" action="controler/registro_usuario.php">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email. Ex: exemplo@gmail.com">
+
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX">
+
+            <label for="celular">Celular</label>
+            <input type="text" id="celular" name="celular" placeholder="(XX) XXXXX-XXXX">
+
+            <label for="nascimento">Data de Nascimento</label>
+            <input type="date" id="nascimento" name="nascimento">
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="termos" name="termos">
+                <label for="termos">Li e aceito os termos e condições</label>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div id="email-popup" class="popup hidden">
+        <p>O email já está cadastrado. Por favor, insira outro email.</p>
+        <button type="button" id="fechar-popup">Fechar</button>
+    </div>
+
+    <script>
+        let emailValido = true; 
+    
+        document.getElementById('email').addEventListener('blur', function () {
+            const email = this.value;
+    
+            fetch('controler/valida_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ email }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'exists') {
+                        emailValido = false;
+                        const popup = document.getElementById('email-popup');
+                        popup.classList.remove('hidden');
+                    } else {
+                        emailValido = true;
+                    }
+                })
+                .catch(err => console.error('Erro na validação do email:', err));
+        });
+    
+        document.getElementById('fechar-popup').addEventListener('click', function () {
+            const popup = document.getElementById('email-popup');
+            popup.classList.add('hidden');
+        });
+    
+        document.getElementById('formulario').addEventListener('submit', function (e) {
+            if (!emailValido) {
+                e.preventDefault();
+                alert('Por favor, corrija o email antes de continuar.');
+            }
+        });
+    </script>
+</body>
+</html>
